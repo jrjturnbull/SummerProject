@@ -1,0 +1,28 @@
+! Specify the lattice vectors.
+%BLOCK LATTICE_CART
+2.6954645 2.6954645 0.0 
+2.6954645 0.0       2.6954645
+0.0       2.6954645 2.6954645
+%ENDBLOCK LATTICE_CART
+
+! Specift the atomic positions.
+%BLOCK POSITIONS_FRAC
+Si 0.00 0.00 0.00
+Si 0.25 0.25 0.25
+%ENDBLOCK POSITIONS_FRAC
+
+! Analyse structure to determine symmetry
+symmetry_generate
+
+! Specify M-P grid dimensions for electron wavevectors (K-points)
+KPOINT_MP_GRID 4 4 4
+
+! Specify a path through the Brillouin Zone to compute the band structure.
+%BLOCK BS_KPOINT_PATH 
+0.5 0.25 0.75    ! W
+0.5 0.5 0.5      ! L
+0.0 0.0  0.0     ! Gamma
+0.5 0.0 0.5      ! X
+0.5 0.25 0.75    ! W
+0.375 0.375 0.75 ! K
+%ENDBLOCK BS_KPOINT_PATH 

@@ -1,0 +1,42 @@
+!
+!  Task keyword specifies type of calculation
+!     Singlepoint: Just calculate the energy etc at this geometry
+task          : geometryoptimisation
+!
+! Treat the system as an insulator
+!
+fix_occupancy : true
+!
+! Tune for speed rather than memory conservation.  
+!
+opt_strategy  : speed
+!
+! Don't write unnecessary wavefunction files
+!
+num_dump_cycles : 0
+!
+! Choose exchange-correlation functional
+!
+xc_functional  : LDA
+! 
+! Give plane-wave cutoff. Also allowed keywords (COARSE,MEDIUM,FINE,PRECISE)
+!
+cut_off_energy : 400 eV
+!
+! Choose size of FFT grid. 2.0 is fully converged. 1.75 is good enough for LDA
+!
+grid_scale 1.75
+!
+! Choose which SCF solver to use ("none" for allbands, "dm" for Density Mixing)
+!
+elec_method    : dm
+mixing_scheme  : Pulay
+mix_charge_amp : 0.6
+!
+! Convergence tolerance criterion - energy per atom.
+!
+elec_energy_tol : 1.0e-8 eV
+!
+! Turn on calculation of stress (off by default)
+!
+calculate_stress : true

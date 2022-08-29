@@ -1,0 +1,2779 @@
+ +-------------------------------------------------+
+ |                                                 |
+ |      CCC   AA    SSS  TTTTT  EEEEE  PPPP        |
+ |     C     A  A  S       T    E      P   P       |
+ |     C     AAAA   SS     T    EEE    PPPP        |
+ |     C     A  A     S    T    E      P           |
+ |      CCC  A  A  SSS     T    EEEEE  P           |
+ |                                                 |
+ +-------------------------------------------------+
+ |                                                 |
+ | Welcome to Academic Release CASTEP version 18.1 |          
+ | Ab Initio Total Energy Program                  |
+ |                                                 |
+ | Authors:                                        |
+ | M. Segall, M. Probert, C. Pickard, P. Hasnip,   |
+ | S. Clark, K. Refson, J. R. Yates, M. Payne      |
+ |                                                 |
+ | Contributors:                                   |
+ | P. Lindan, P. Haynes, J. White, V. Milman,      |
+ | N. Govind, M. Gibson, P. Tulip, V. Cocula,      |
+ | B. Montanari, D. Quigley, M. Glover,            |
+ | L. Bernasconi, A. Perlov, M. Plummer,           |
+ | E. McNellis, J. Meyer, J. Gale, D. Jochym       |
+ | J. Aarons, B. Walker, R. Gillen, D. Jones       |
+ | T. Green, I. J. Bush, C. J. Armstrong,          |
+ | E. J. Higgins, E. L. Brown, M. S. McFly,        |
+ | J. Wilkins, B-C. Shih, P. J. P. Byrne           |
+ |                                                 |
+ | Copyright (c) 2000 - 2017                       |
+ |                                                 |
+ |     Distributed under the terms of an           |
+ |     Agreement between the United Kingdom        |
+ |     Car-Parrinello (UKCP) Consortium,           |
+ |     Daresbury Laboratory and Accelrys, Inc.     |
+ |                                                 |
+ | Please cite                                     |
+ |                                                 |
+ |     "First principles methods using CASTEP"     |
+ |                                                 |
+ |         Zeitschrift fuer Kristallographie       |
+ |           220(5-6) pp. 567-570 (2005)           |
+ |                                                 |
+ | S. J. Clark, M. D. Segall, C. J. Pickard,       |
+ | P. J. Hasnip, M. J. Probert, K. Refson,         |
+ | M. C. Payne                                     |
+ |                                                 |
+ |       in all publications arising from          |
+ |              your use of CASTEP                 |
+ |                                                 |
+ +-------------------------------------------------+
+
+
+ Compiled for linux_x86_64_gfortran4.8 on Thu, 19 Jul 2018 15:42:32 +0100
+ from code version 70483bd0ad64+  Sun, 10 Dec 2017 12:18:29 +0000
+ Compiler: GNU Fortran 4.8.5; Optimisation: fast
+ MATHLIBS: Intel MKL(2018.0.0) (LAPACK version 3.7.0)
+ FFT Lib : mkl
+ Fundamental constants values: CODATA 2014
+
+ Run started: Thu, 27 Aug 2020 12:10:39 +0100
+
+ Atomic calculation performed for H: 1s1
+
+ Converged in 41 iterations to an ae energy of -12.488 eV
+
+   ============================================================                
+   | Pseudopotential Report - Date of generation 27-08-2020   |                
+   ------------------------------------------------------------                
+   | Element: H Ionic charge:  1.00 Level of theory: PBE      |                
+   | Atomic Solver: Koelling-Harmon                           |                
+   |                                                          |                
+   |               Reference Electronic Structure             |                
+   |         Orbital         Occupation         Energy        |                
+   |            1s              1.000           -0.239        |                
+   |                                                          |                
+   |                 Pseudopotential Definition               |                
+   |        Beta     l      e      Rc     scheme   norm       |                
+   |         loc     0   -0.239   0.702     qc      1         |                
+   |                                                          |                
+   | No charge augmentation                                   |                
+   | No partial core correction                               |                
+   ------------------------------------------------------------                
+   | "0|0.7|2|6|8|10L(qc=10)"                                 |                
+   ------------------------------------------------------------                
+   |      Author: Chris J. Pickard, Cambridge University      |                
+   ============================================================                
+
+ Pseudo atomic calculation performed for H 1s1
+
+ Converged in 24 iterations to a total energy of -12.4855 eV
+
+ Calculation parallelised over 32 processes.
+ Data is distributed by k-point(32-way)
+
+ ************************************ Title ************************************
+ 
+
+ ***************************** General Parameters ******************************
+  
+ output verbosity                               : normal  (1)
+ write checkpoint data to                       : Cmca4.check
+ type of calculation                            : geometry optimization
+ stress calculation                             : on
+ density difference calculation                 : off
+ electron localisation func (ELF) calculation   : off
+ Hirshfeld analysis                             : off
+ unlimited duration calculation
+ timing information                             : on
+ memory usage estimate                          : on
+ write extra output files                       : on
+ write final potential to formatted file        : off
+ write final density to formatted file          : off
+ write structure in CELL formatted file         : on
+ write BibTeX reference list                    : on
+ write OTFG pseudopotential files               : on
+ write electrostatic potential file             : on
+ write bands file                               : on
+ checkpoint writing                             : both castep_bin and check files
+  
+ output         length unit                     : A
+ output           mass unit                     : amu
+ output           time unit                     : ps
+ output         charge unit                     : e
+ output           spin unit                     : hbar/2
+ output         energy unit                     : eV
+ output          force unit                     : eV/A
+ output       velocity unit                     : A/ps
+ output       pressure unit                     : GPa
+ output     inv_length unit                     : 1/A
+ output      frequency unit                     : cm-1
+ output force constant unit                     : eV/A**2
+ output         volume unit                     : A**3
+ output   IR intensity unit                     : (D/A)**2/amu
+ output         dipole unit                     : D
+ output         efield unit                     : eV/A/e
+ output        entropy unit                     : J/mol/K
+  
+ wavefunctions paging                           : none
+ random number generator seed                   : randomised (121040330)
+ data distribution                              : optimal for this architecture
+ optimization strategy                          : maximize speed(+++)
+
+ *********************** Exchange-Correlation Parameters ***********************
+  
+ using functional                               : Perdew Burke Ernzerhof
+ relativistic treatment                         : Koelling-Harmon
+ DFT+D: Semi-empirical dispersion correction    : off
+
+ ************************* Pseudopotential Parameters **************************
+  
+ pseudopotential representation                 : reciprocal space
+ <beta|phi> representation                      : reciprocal space
+ spin-orbit coupling                            : off
+
+ **************************** Basis Set Parameters *****************************
+  
+ plane wave basis set cut-off                   :  1600.0000   eV
+ size of standard grid                          :     2.0000
+ size of   fine   gmax                          :    40.9853   1/A
+ finite basis set correction                    : automatic
+ number of sample energies                      :          3
+           sample  spacing                      :     5.0000   eV
+
+ **************************** Electronic Parameters ****************************
+  
+ number of  electrons                           :  8.000    
+ net charge of system                           :  0.000    
+ treating system as non-spin-polarized
+ number of bands                                :          4
+
+ ********************* Electronic Minimization Parameters **********************
+  
+ Method: Treating system as non-metallic,
+         and number of  SD  steps               :          1
+         and number of  CG  steps               :          4
+  
+ total energy / atom convergence tol.           : 0.1000E-10   eV
+ eigen-energy convergence tolerance             : 0.2000E-10   eV
+ max force / atom convergence tol.              : ignored
+ convergence tolerance window                   :          3   cycles
+ max. number of SCF cycles                      :        100
+ periodic dipole correction                     : NONE
+
+ ************************** Density Mixing Parameters **************************
+  
+ density-mixing scheme                          : Broyden
+ max. length of mixing history                  :         20
+ charge density mixing amplitude                : 0.8000    
+ cut-off energy for mixing                      :  1600.       eV
+
+ *********************** Population Analysis Parameters ************************
+  
+ Population analysis with cutoff                :  3.000       A
+ Population analysis output                     : summary and pdos components
+
+ ********************** Geometry Optimization Parameters ***********************
+  
+ optimization method                            : LBFGS
+ max. no. of LBFGS updates                      : unbounded
+ variable cell method                           : fixed basis quality
+ max. number of steps                           :        200
+ estimated bulk modulus                         :  500.0       GPa
+ estimated <frequency>                          :  1668.       cm-1
+ geom line minimiser                            : on
+ with line minimiser tolerance                  :     0.4000
+ total energy convergence tolerance             : 0.1000E-08   eV/atom
+        max ionic |force| tolerance             : 0.1000E-04   eV/A
+ max ionic |displacement| tolerance             : 0.1000E-04   A
+   max |stress component| tolerance             : 0.1000E-04   GPa
+ convergence tolerance window                   :          2   steps
+ backup results every                           :      14400   seconds
+ write geom trajectory file                     : on
+
+ *******************************************************************************
+  
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)                      Reciprocal Lattice(1/A)
+     2.7905658     0.0000000     0.0000000        2.251581117  -0.000000000   0.000000000
+     0.0000000     2.7620719     0.0000000       -0.000000000   2.274808717   0.000000000
+     0.0000000     0.0000000     2.7801012        0.000000000   0.000000000   2.260056366
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.790566          alpha =   90.000000
+                    b =      2.762072          beta  =   90.000000
+                    c =      2.780101          gamma =   90.000000
+
+                       Current cell volume =            21.428307       A**3
+                                   density =             0.376302   AMU/A**3
+                                           =             0.624865     g/cm^3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+                         Total number of ions in cell =    8
+                      Total number of species in cell =    1
+                        Max number of any one species =    8
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element    Atom        Fractional coordinates of atoms  x
+            x            Number           u          v          w      x
+            x----------------------------------------------------------x
+            x  H            1         0.000000   0.403984   0.409273   x 
+            x  H            2         0.000000   0.096016   0.909273   x 
+            x  H            3         0.000000   0.903984   0.090727   x 
+            x  H            4        -0.000000   0.596016   0.590727   x 
+            x  H            5         0.500000   0.903984   0.409273   x 
+            x  H            6         0.500000   0.596016   0.909273   x 
+            x  H            7         0.500000   0.403984   0.090727   x 
+            x  H            8         0.500000   0.096016   0.590727   x 
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+                         No user defined ionic velocities
+
+                           -------------------------------
+                                   Details of Species
+                           -------------------------------
+
+                               Mass of species in AMU
+                                    H    1.0079400
+
+                          Electric Quadrupole Moment (Barn)
+                                    H    0.0028600 Isotope  2
+
+                          Files used for pseudopotentials:
+                                    H 0|0.7|2|6|8|10L(qc=10)
+
+                           -------------------------------
+                              k-Points For BZ Sampling
+                           -------------------------------
+                       MP grid size for SCF calculation is 18 18 18
+                            with an offset of   0.000  0.000  0.000
+                       Number of kpoints used =           729
+
+                           -------------------------------
+                               Symmetry and Constraints
+                           -------------------------------
+
+                      Cell is a supercell containing 2 primitive cells
+                      Maximum deviation from symmetry = 0.291319E-14     ANG
+
+                      Number of symmetry operations   =          16
+                      Number of ionic constraints     =           3
+                      Point group of crystal =     8: D2h, mmm, 2/m 2/m 2/m
+                      Space group of crystal =    64: Cmce, -C 2bc 2
+
+             Set iprint > 1 for details on symmetry rotations/translations
+
+                         Centre of mass is constrained
+             Set iprint > 1 for details of linear ionic constraints
+
+                         Number of cell constraints= 3
+                         Cell constraints are:  1 2 3 0 0 0
+
+                         External pressure/stress (GPa)
+                         60.00000   0.00000   0.00000
+                                   60.00000   0.00000
+                                             60.00000
+  
++---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
+|                                                     Memory          Disk    |
+| Baseline code, static data and system overhead      479.0 MB         0.0 MB |
+| BLAS internal memory storage                          0.0 MB         0.0 MB |
+| Model and support data                               31.3 MB         0.0 MB |
+| Electronic energy minimisation requirements          21.8 MB         0.0 MB |
+| Force calculation requirements                        7.3 MB         0.0 MB |
+| Stress calculation requirements                       9.3 MB         0.0 MB |
+|                                               ----------------------------- |
+| Approx. total storage required per process          532.1 MB         0.0 MB |
+|                                                                             |
+| Requirements will fluctuate during execution and may exceed these estimates |
++-----------------------------------------------------------------------------+
+Calculating finite basis set correction with  3 cut-off energies.
+Calculating total energy with cut-off of 1590.000 eV.
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial   2.03999730E+002                                          5.00  <-- SCF
+      1  -1.00420604E+002                    3.80525417E+001       7.14  <-- SCF
+      2  -1.23195297E+002                    2.84683662E+000       8.42  <-- SCF
+      3  -1.23294689E+002                    1.24240091E-002       9.50  <-- SCF
+      4  -1.22564625E+002                   -9.12579581E-002      11.44  <-- SCF
+      5  -1.22539487E+002                   -3.14226443E-003      13.49  <-- SCF
+      6  -1.22540428E+002                    1.17594041E-004      15.41  <-- SCF
+      7  -1.22540530E+002                    1.27524744E-005      17.33  <-- SCF
+      8  -1.22540530E+002                    3.95436044E-008      19.26  <-- SCF
+      9  -1.22540530E+002                    2.71989113E-009      21.19  <-- SCF
+     10  -1.22540530E+002                    5.41285243E-011      22.60  <-- SCF
+     11  -1.22540530E+002                    1.87306385E-013      24.02  <-- SCF
+     12  -1.22540530E+002                    6.55572348E-013      25.44  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -122.5405301298     eV
+(energy not corrected for finite basis set)
+ 
+Calculating total energy with cut-off of 1595.000 eV.
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.22540530E+002                                         26.45  <-- SCF
+      1  -1.22540546E+002                    2.02106066E-006      28.03  <-- SCF
+      2  -1.22540546E+002                    2.47425693E-012      29.57  <-- SCF
+      3  -1.22540546E+002                    6.87541319E-010      31.00  <-- SCF
+      4  -1.22540546E+002                    5.02524905E-011      32.41  <-- SCF
+      5  -1.22540546E+002                    9.87890129E-013      33.86  <-- SCF
+      6  -1.22540546E+002                   -4.22949902E-013      35.27  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -122.5405463042     eV
+(energy not corrected for finite basis set)
+ 
+Calculating total energy with cut-off of 1600.000 eV.
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.22540546E+002                                         36.24  <-- SCF
+      1  -1.22540561E+002                    1.89816184E-006      37.88  <-- SCF
+      2  -1.22540561E+002                    3.27181960E-012      39.41  <-- SCF
+      3  -1.22540561E+002                    6.40877860E-010      40.94  <-- SCF
+      4  -1.22540561E+002                    4.56665051E-011      42.52  <-- SCF
+      5  -1.22540561E+002                    1.41688217E-012      44.05  <-- SCF
+      6  -1.22540561E+002                   -3.89718124E-013      45.59  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -122.5405614950     eV
+(energy not corrected for finite basis set)
+ 
+ For future reference: finite basis dEtot/dlog(Ecut) =      -0.005000eV
+ Total energy corrected for finite basis set =    -122.540562 eV
+ 
++---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
+|                                                     Memory          Disk    |
+| Model and support data                               39.4 MB         0.0 MB |
+| Electronic energy minimisation requirements          21.8 MB         0.0 MB |
+| Geometry minimisation requirements                   28.3 MB         0.0 MB |
+|                                               ----------------------------- |
+| Approx. total storage required per process           89.4 MB         0.0 MB |
+|                                                                             |
+| Requirements will fluctuate during execution and may exceed these estimates |
++-----------------------------------------------------------------------------+
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1     -0.00000              0.00000              0.00000         *
+ * H               2     -0.00000             -0.00000              0.00000         *
+ * H               3     -0.00000              0.00000             -0.00000         *
+ * H               4     -0.00000             -0.00000             -0.00000         *
+ * H               5     -0.00000              0.00000              0.00000         *
+ * H               6      0.00000             -0.00000              0.00000         *
+ * H               7     -0.00000              0.00000             -0.00000         *
+ * H               8     -0.00000             -0.00000             -0.00000         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -70.003287      0.000000      0.000000  *
+ *  y      0.000000    -70.003287      0.000000  *
+ *  z      0.000000      0.000000    -70.003283  *
+ *                                               *
+ *  Pressure:   70.0033                          *
+ *                                               *
+ *************************************************
+ LBFGS: finished iteration     0 with enthalpy= -1.14515863E+002 eV
+  
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ | Parameter |      value      |    tolerance    |    units   | OK? | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ |  dE/ion   |   0.000000E+000 |   1.000000E-009 |         eV | No  | <-- LBFGS
+ |  |F|max   |   9.544294E-008 |   1.000000E-005 |       eV/A | Yes | <-- LBFGS
+ |  |dR|max  |   0.000000E+000 |   1.000000E-005 |          A | No  | <-- LBFGS
+ |   Smax    |   1.000329E+001 |   1.000000E-005 |        GPa | No  | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+  
+
+================================================================================
+ Starting LBFGS iteration          1 ...
+================================================================================
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.085159 |     -114.515863 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: starting iteration         1 with trial guess (lambda=  1.000000)
+--------------------------------------------------------------------------------
+ 
++---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
+|                                                     Memory          Disk    |
+| Model and support data                               39.7 MB         0.0 MB |
+| Electronic energy minimisation requirements          22.1 MB         0.0 MB |
+| Geometry minimisation requirements                   28.6 MB         0.0 MB |
+|                                               ----------------------------- |
+| Approx. total storage required per process           90.4 MB         0.0 MB |
+|                                                                             |
+| Requirements will fluctuate during execution and may exceed these estimates |
++-----------------------------------------------------------------------------+
+ 
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8091757     0.0000000     0.0000000        2.236665114  -0.000000000   0.000000000
+     0.0000000     2.7804918     0.0000000       -0.000000000   2.259738840   0.000000000
+     0.0000000     0.0000000     2.7986412        0.000000000   0.000000000   2.245084223
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.809176          alpha =   90.000000
+                    b =      2.780492          beta  =   90.000000
+                    c =      2.798641          gamma =   90.000000
+
+                Current cell volume =            21.859879 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1         0.000000   0.403984   0.409273   x
+            x  H                 2         0.000000   0.096016   0.909273   x
+            x  H                 3        -0.000000   0.903984   0.090727   x
+            x  H                 4         0.000000   0.596016   0.590727   x
+            x  H                 5         0.500000   0.903984   0.409273   x
+            x  H                 6         0.500000   0.596016   0.909273   x
+            x  H                 7         0.500000   0.403984   0.090727   x
+            x  H                 8         0.500000   0.096016   0.590727   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.22719854E+002                                         47.51  <-- SCF
+      1  -1.22722991E+002                    3.92143852E-004      49.14  <-- SCF
+      2  -1.22722999E+002                    9.16773087E-007      51.25  <-- SCF
+      3  -1.22722838E+002                   -2.00611648E-005      53.36  <-- SCF
+      4  -1.22722833E+002                   -6.05323326E-007      55.45  <-- SCF
+      5  -1.22722834E+002                    2.35968373E-008      57.54  <-- SCF
+      6  -1.22722834E+002                    2.41684148E-009      59.64  <-- SCF
+      7  -1.22722834E+002                    8.80642118E-012      61.18  <-- SCF
+      8  -1.22722834E+002                    9.51637280E-013      62.71  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -122.7228337046     eV
+(energy not corrected for finite basis set)
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1      0.00000              0.10647              0.10118         *
+ * H               2     -0.00000             -0.10647              0.10118         *
+ * H               3      0.00000              0.10647             -0.10118         *
+ * H               4      0.00000             -0.10647             -0.10118         *
+ * H               5      0.00000              0.10647              0.10118         *
+ * H               6     -0.00000             -0.10647              0.10118         *
+ * H               7      0.00000              0.10647             -0.10118         *
+ * H               8      0.00000             -0.10647             -0.10118         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -66.481363      0.000000      0.000000  *
+ *  y      0.000000    -64.759530      0.000000  *
+ *  z      0.000000      0.000000    -64.915708  *
+ *                                               *
+ *  Pressure:   65.3855                          *
+ *                                               *
+ *************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.085159 |     -114.515863 | <-- min LBFGS
+ | trial step |    1.000000 |    0.046461 |     -114.536516 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: improving iteration         1 with line minimization (lambda=  2.200615)
+--------------------------------------------------------------------------------
+ 
++---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
+|                                                     Memory          Disk    |
+| Model and support data                               40.1 MB         0.0 MB |
+| Electronic energy minimisation requirements          22.5 MB         0.0 MB |
+| Geometry minimisation requirements                   29.2 MB         0.0 MB |
+|                                               ----------------------------- |
+| Approx. total storage required per process           91.7 MB         0.0 MB |
+|                                                                             |
+| Requirements will fluctuate during execution and may exceed these estimates |
++-----------------------------------------------------------------------------+
+ 
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8315190     0.0000000     0.0000000        2.219015756  -0.000000000   0.000000000
+     0.0000000     2.8026070     0.0000000       -0.000000000   2.241907408   0.000000000
+     0.0000000     0.0000000     2.8209008        0.000000000   0.000000000   2.227368436
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.831519          alpha =   90.000000
+                    b =      2.802607          beta  =   90.000000
+                    c =      2.820901          gamma =   90.000000
+
+                Current cell volume =            22.385638 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1         0.000000   0.403984   0.409273   x
+            x  H                 2         0.000000   0.096016   0.909273   x
+            x  H                 3        -0.000000   0.903984   0.090727   x
+            x  H                 4         0.000000   0.596016   0.590727   x
+            x  H                 5         0.500000   0.903984   0.409273   x
+            x  H                 6         0.500000   0.596016   0.909273   x
+            x  H                 7         0.500000   0.403984   0.090727   x
+            x  H                 8         0.500000   0.096016   0.590727   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.22924491E+002                                         64.54  <-- SCF
+      1  -1.22928937E+002                    5.55688370E-004      66.17  <-- SCF
+      2  -1.22928947E+002                    1.32341425E-006      68.27  <-- SCF
+      3  -1.22928716E+002                   -2.88505060E-005      70.37  <-- SCF
+      4  -1.22928709E+002                   -8.66846800E-007      72.46  <-- SCF
+      5  -1.22928710E+002                    3.54400992E-008      74.61  <-- SCF
+      6  -1.22928710E+002                    3.66886382E-009      76.70  <-- SCF
+      7  -1.22928710E+002                    1.45222870E-011      78.27  <-- SCF
+      8  -1.22928710E+002                    6.91825197E-013      79.80  <-- SCF
+      9  -1.22928710E+002                    2.11474951E-013      81.34  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -122.9287097697     eV
+(energy not corrected for finite basis set)
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1      0.00000              0.23035              0.21892         *
+ * H               2      0.00000             -0.23035              0.21892         *
+ * H               3      0.00000              0.23035             -0.21892         *
+ * H               4      0.00000             -0.23035             -0.21892         *
+ * H               5      0.00000              0.23035              0.21892         *
+ * H               6      0.00000             -0.23035              0.21892         *
+ * H               7      0.00000              0.23035             -0.21892         *
+ * H               8      0.00000             -0.23035             -0.21892         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -62.495578      0.000000      0.000000  *
+ *  y      0.000000    -58.829733      0.000000  *
+ *  z      0.000000      0.000000    -59.162334  *
+ *                                               *
+ *  Pressure:   60.1625                          *
+ *                                               *
+ *************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.085159 |     -114.515863 | <-- min LBFGS
+ | trial step |    1.000000 |    0.046461 |     -114.536516 | <-- min LBFGS
+ |  line step |    2.200615 |    0.001425 |     -114.545500 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+ LBFGS: finished iteration     1 with enthalpy= -1.14545500E+002 eV
+  
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ | Parameter |      value      |    tolerance    |    units   | OK? | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ |  dE/ion   |   3.704571E-003 |   1.000000E-009 |         eV | No  | <-- LBFGS
+ |  |F|max   |   3.177852E-001 |   1.000000E-005 |       eV/A | No  | <-- LBFGS
+ |  |dR|max  |   2.067007E-008 |   1.000000E-005 |          A | Yes | <-- LBFGS
+ |   Smax    |   2.495578E+000 |   1.000000E-005 |        GPa | No  | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+  
+
+================================================================================
+ Starting LBFGS iteration          2 ...
+================================================================================
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.063056 |     -114.545500 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: starting iteration         2 with trial guess (lambda=  1.000000)
+--------------------------------------------------------------------------------
+ 
++---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
+|                                                     Memory          Disk    |
+| Model and support data                               41.0 MB         0.0 MB |
+| Electronic energy minimisation requirements          23.5 MB         0.0 MB |
+| Geometry minimisation requirements                   30.5 MB         0.0 MB |
+|                                               ----------------------------- |
+| Approx. total storage required per process           95.0 MB         0.0 MB |
+|                                                                             |
+| Requirements will fluctuate during execution and may exceed these estimates |
++-----------------------------------------------------------------------------+
+ 
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8953348     0.0000000     0.0000000        2.170106659  -0.000000000   0.000000000
+     0.0000000     2.8587031     0.0000000       -0.000000000   2.197914631   0.000000000
+     0.0000000     0.0000000     2.8780085        0.000000000   0.000000000   2.183171230
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.895335          alpha =   90.000000
+                    b =      2.858703          beta  =   90.000000
+                    c =      2.878008          gamma =   90.000000
+
+                Current cell volume =            23.820995 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1        -0.000000   0.412331   0.417155   x
+            x  H                 2         0.000000   0.087669   0.917155   x
+            x  H                 3        -0.000000   0.912331   0.082845   x
+            x  H                 4         0.000000   0.587669   0.582845   x
+            x  H                 5         0.500000   0.912331   0.417155   x
+            x  H                 6         0.500000   0.587669   0.917155   x
+            x  H                 7         0.500000   0.412331   0.082845   x
+            x  H                 8         0.500000   0.087669   0.582845   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.22456063E+002                                         83.19  <-- SCF
+      1  -1.23379093E+002                    1.15378748E-001      84.84  <-- SCF
+      2  -1.23381437E+002                    2.93053190E-004      86.95  <-- SCF
+      3  -1.23309561E+002                   -8.98443447E-003      89.08  <-- SCF
+      4  -1.23306911E+002                   -3.31275940E-004      91.26  <-- SCF
+      5  -1.23306952E+002                    5.12860953E-006      93.38  <-- SCF
+      6  -1.23306957E+002                    5.35907610E-007      95.54  <-- SCF
+      7  -1.23306957E+002                    3.15151150E-009      97.65  <-- SCF
+      8  -1.23306957E+002                    2.17039763E-010      99.47  <-- SCF
+      9  -1.23306957E+002                    6.92731518E-012     101.02  <-- SCF
+     10  -1.23306957E+002                   -2.56791012E-013     102.60  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -123.3069565857     eV
+(energy not corrected for finite basis set)
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1      0.00000             -1.24678             -1.18717         *
+ * H               2     -0.00000              1.24678             -1.18717         *
+ * H               3     -0.00000             -1.24678              1.18717         *
+ * H               4      0.00000              1.24678              1.18717         *
+ * H               5      0.00000             -1.24678             -1.18717         *
+ * H               6     -0.00000              1.24678             -1.18717         *
+ * H               7     -0.00000             -1.24678              1.18717         *
+ * H               8     -0.00000              1.24678              1.18717         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -51.023347     -0.000000      0.000000  *
+ *  y     -0.000000    -68.292973      0.000000  *
+ *  z      0.000000      0.000000    -66.748808  *
+ *                                               *
+ *  Pressure:   62.0217                          *
+ *                                               *
+ *************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.063056 |     -114.545500 | <-- min LBFGS
+ | trial step |    1.000000 |   -0.328318 |     -114.386219 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: improving iteration         2 with line minimization (lambda=  0.161115)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8418007     0.0000000     0.0000000        2.210987343  -0.000000000   0.000000000
+     0.0000000     2.8116449     0.0000000       -0.000000000   2.234700901   0.000000000
+     0.0000000     0.0000000     2.8301016        0.000000000   0.000000000   2.220127083
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.841801          alpha =   90.000000
+                    b =      2.811645          beta  =   90.000000
+                    c =      2.830102          gamma =   90.000000
+
+                Current cell volume =            22.612892 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1        -0.000000   0.405328   0.410543   x
+            x  H                 2         0.000000   0.094672   0.910543   x
+            x  H                 3        -0.000000   0.905328   0.089457   x
+            x  H                 4         0.000000   0.594672   0.589457   x
+            x  H                 5         0.500000   0.905328   0.410543   x
+            x  H                 6         0.500000   0.594672   0.910543   x
+            x  H                 7         0.500000   0.405328   0.089457   x
+            x  H                 8         0.500000   0.094672   0.589457   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.22377894E+002                                        104.41  <-- SCF
+      1  -1.23075537E+002                    8.72052686E-002     106.03  <-- SCF
+      2  -1.23077229E+002                    2.11577475E-004     108.11  <-- SCF
+      3  -1.23023644E+002                   -6.69818006E-003     110.21  <-- SCF
+      4  -1.23021759E+002                   -2.35655724E-004     112.30  <-- SCF
+      5  -1.23021778E+002                    2.45951437E-006     114.53  <-- SCF
+      6  -1.23021780E+002                    2.23833197E-007     116.62  <-- SCF
+      7  -1.23021780E+002                    8.69146944E-010     118.71  <-- SCF
+      8  -1.23021780E+002                    1.00520086E-010     120.23  <-- SCF
+      9  -1.23021780E+002                    4.28085722E-012     121.77  <-- SCF
+     10  -1.23021780E+002                   -4.95455600E-013     123.30  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -123.0217800448     eV
+(energy not corrected for finite basis set)
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1      0.00000              0.03335              0.03140         *
+ * H               2      0.00000             -0.03335              0.03140         *
+ * H               3     -0.00000              0.03335             -0.03140         *
+ * H               4     -0.00000             -0.03335             -0.03140         *
+ * H               5      0.00000              0.03335              0.03140         *
+ * H               6      0.00000             -0.03335              0.03140         *
+ * H               7     -0.00000              0.03335             -0.03140         *
+ * H               8     -0.00000             -0.03335             -0.03140         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -60.530212      0.000000      0.000000  *
+ *  y      0.000000    -60.027096      0.000000  *
+ *  z      0.000000      0.000000    -60.084400  *
+ *                                               *
+ *  Pressure:   60.2139                          *
+ *                                               *
+ *************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.063056 |     -114.545500 | <-- min LBFGS
+ | trial step |    1.000000 |   -0.328318 |     -114.386219 | <-- min LBFGS
+ |  line step |    0.161115 |    0.010373 |     -114.553466 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+ LBFGS: finished iteration     2 with enthalpy= -1.14553466E+002 eV
+  
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ | Parameter |      value      |    tolerance    |    units   | OK? | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ |  dE/ion   |   9.957380E-004 |   1.000000E-009 |         eV | No  | <-- LBFGS
+ |  |F|max   |   4.580776E-002 |   1.000000E-005 |       eV/A | No  | <-- LBFGS
+ |  |dR|max  |   5.216553E-003 |   1.000000E-005 |          A | No  | <-- LBFGS
+ |   Smax    |   5.302121E-001 |   1.000000E-005 |        GPa | No  | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+  
+
+================================================================================
+ Starting LBFGS iteration          3 ...
+================================================================================
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.008451 |     -114.553466 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: starting iteration         3 with trial guess (lambda=  1.000000)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8447565     0.0000000     0.0000000        2.208689987  -0.000000000   0.000000000
+     0.0000000     2.8143988     0.0000000       -0.000000000   2.232514177   0.000000000
+     0.0000000     0.0000000     2.8329161        0.000000000   0.000000000   2.217921406
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.844757          alpha =   90.000000
+                    b =      2.814399          beta  =   90.000000
+                    c =      2.832916          gamma =   90.000000
+
+                Current cell volume =            22.681118 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1        -0.000000   0.405601   0.410788   x
+            x  H                 2         0.000000   0.094399   0.910788   x
+            x  H                 3        -0.000000   0.905601   0.089212   x
+            x  H                 4         0.000000   0.594399   0.589212   x
+            x  H                 5         0.500000   0.905601   0.410788   x
+            x  H                 6         0.500000   0.594399   0.910788   x
+            x  H                 7         0.500000   0.405601   0.089212   x
+            x  H                 8         0.500000   0.094399   0.589212   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.23046583E+002                                        125.14  <-- SCF
+      1  -1.23047642E+002                    1.32417047E-004     126.78  <-- SCF
+      2  -1.23047645E+002                    3.64160216E-007     128.89  <-- SCF
+      3  -1.23047563E+002                   -1.02800654E-005     130.98  <-- SCF
+      4  -1.23047560E+002                   -3.98629926E-007     133.10  <-- SCF
+      5  -1.23047560E+002                    4.73203601E-009     135.25  <-- SCF
+      6  -1.23047560E+002                    4.57631794E-010     137.34  <-- SCF
+      7  -1.23047560E+002                    1.64950462E-012     138.88  <-- SCF
+      8  -1.23047560E+002                    3.41380992E-013     140.43  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -123.0475600220     eV
+(energy not corrected for finite basis set)
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1     -0.00000             -0.00169             -0.00194         *
+ * H               2     -0.00000              0.00169             -0.00194         *
+ * H               3     -0.00000             -0.00169              0.00194         *
+ * H               4      0.00000              0.00169              0.00194         *
+ * H               5     -0.00000             -0.00169             -0.00194         *
+ * H               6      0.00000              0.00169             -0.00194         *
+ * H               7     -0.00000             -0.00169              0.00194         *
+ * H               8      0.00000              0.00169              0.00194         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -59.988648     -0.000000      0.000000  *
+ *  y     -0.000000    -60.031311      0.000000  *
+ *  z      0.000000      0.000000    -60.039886  *
+ *                                               *
+ *  Pressure:   60.0199                          *
+ *                                               *
+ *************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.008451 |     -114.553466 | <-- min LBFGS
+ | trial step |    1.000000 |   -0.000231 |     -114.553696 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+ LBFGS: finished iteration     3 with enthalpy= -1.14553696E+002 eV
+  
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ | Parameter |      value      |    tolerance    |    units   | OK? | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ |  dE/ion   |   2.873862E-005 |   1.000000E-009 |         eV | No  | <-- LBFGS
+ |  |F|max   |   2.574797E-003 |   1.000000E-005 |       eV/A | No  | <-- LBFGS
+ |  |dR|max  |   1.034898E-003 |   1.000000E-005 |          A | No  | <-- LBFGS
+ |   Smax    |   3.988588E-002 |   1.000000E-005 |        GPa | No  | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+  
+
+================================================================================
+ Starting LBFGS iteration          4 ...
+================================================================================
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.000704 |     -114.553696 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: starting iteration         4 with trial guess (lambda=  1.000000)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8447488     0.0000000     0.0000000        2.208695992  -0.000000000   0.000000000
+     0.0000000     2.8144228     0.0000000       -0.000000000   2.232495198   0.000000000
+     0.0000000     0.0000000     2.8329605        0.000000000   0.000000000   2.217886651
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.844749          alpha =   90.000000
+                    b =      2.814423          beta  =   90.000000
+                    c =      2.832961          gamma =   90.000000
+
+                Current cell volume =            22.681605 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1        -0.000000   0.405599   0.410774   x
+            x  H                 2         0.000000   0.094401   0.910774   x
+            x  H                 3        -0.000000   0.905599   0.089226   x
+            x  H                 4        -0.000000   0.594401   0.589226   x
+            x  H                 5         0.500000   0.905599   0.410774   x
+            x  H                 6         0.500000   0.594401   0.910774   x
+            x  H                 7         0.500000   0.405599   0.089226   x
+            x  H                 8         0.500000   0.094401   0.589226   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.23047742E+002                                        142.27  <-- SCF
+      1  -1.23047743E+002                    1.25223231E-007     143.90  <-- SCF
+      2  -1.23047743E+002                    2.44712771E-010     145.99  <-- SCF
+      3  -1.23047743E+002                   -4.60115718E-009     148.12  <-- SCF
+      4  -1.23047743E+002                   -1.37322770E-010     150.28  <-- SCF
+      5  -1.23047743E+002                    2.09662309E-012     151.81  <-- SCF
+      6  -1.23047743E+002                    6.94846268E-013     153.36  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -123.0477427015     eV
+(energy not corrected for finite basis set)
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1     -0.00000              0.00015             -0.00018         *
+ * H               2      0.00000             -0.00015             -0.00018         *
+ * H               3     -0.00000              0.00015              0.00018         *
+ * H               4     -0.00000             -0.00015              0.00018         *
+ * H               5     -0.00000              0.00015             -0.00018         *
+ * H               6      0.00000             -0.00015             -0.00018         *
+ * H               7      0.00000              0.00015              0.00018         *
+ * H               8      0.00000             -0.00015              0.00018         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -59.988431     -0.000000      0.000000  *
+ *  y     -0.000000    -60.001595      0.000000  *
+ *  z      0.000000      0.000000    -60.011824  *
+ *                                               *
+ *  Pressure:   60.0006                          *
+ *                                               *
+ *************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.000704 |     -114.553696 | <-- min LBFGS
+ | trial step |    1.000000 |    0.000066 |     -114.553696 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+ LBFGS: finished iteration     4 with enthalpy= -1.14553696E+002 eV
+  
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ | Parameter |      value      |    tolerance    |    units   | OK? | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ |  dE/ion   |   5.798872E-008 |   1.000000E-009 |         eV | No  | <-- LBFGS
+ |  |F|max   |   2.274823E-004 |   1.000000E-005 |       eV/A | No  | <-- LBFGS
+ |  |dR|max  |   4.069216E-005 |   1.000000E-005 |          A | No  | <-- LBFGS
+ |   Smax    |   1.182363E-002 |   1.000000E-005 |        GPa | No  | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+  
+
+================================================================================
+ Starting LBFGS iteration          5 ...
+================================================================================
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.000098 |     -114.553696 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: starting iteration         5 with trial guess (lambda=  1.000000)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8447259     0.0000000     0.0000000        2.208713816  -0.000000000   0.000000000
+     0.0000000     2.8144298     0.0000000       -0.000000000   2.232489628   0.000000000
+     0.0000000     0.0000000     2.8329911        0.000000000   0.000000000   2.217862688
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.844726          alpha =   90.000000
+                    b =      2.814430          beta  =   90.000000
+                    c =      2.832991          gamma =   90.000000
+
+                Current cell volume =            22.681724 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1         0.000000   0.405605   0.410767   x
+            x  H                 2         0.000000   0.094395   0.910767   x
+            x  H                 3        -0.000000   0.905605   0.089233   x
+            x  H                 4        -0.000000   0.594395   0.589233   x
+            x  H                 5         0.500000   0.905605   0.410767   x
+            x  H                 6         0.500000   0.594395   0.910767   x
+            x  H                 7         0.500000   0.405605   0.089233   x
+            x  H                 8         0.500000   0.094395   0.589233   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.23047787E+002                                        155.25  <-- SCF
+      1  -1.23047787E+002                    3.42803826E-008     156.87  <-- SCF
+      2  -1.23047787E+002                    2.74524697E-011     158.70  <-- SCF
+      3  -1.23047787E+002                    7.86704944E-010     160.49  <-- SCF
+      4  -1.23047787E+002                    6.23277102E-011     162.04  <-- SCF
+      5  -1.23047787E+002                    4.59202751E-013     163.59  <-- SCF
+      6  -1.23047787E+002                    5.61919156E-013     165.13  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -123.0477871945     eV
+(energy not corrected for finite basis set)
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1      0.00000              0.00031              0.00000         *
+ * H               2      0.00000             -0.00031              0.00000         *
+ * H               3      0.00000              0.00031             -0.00000         *
+ * H               4      0.00000             -0.00031             -0.00000         *
+ * H               5      0.00000              0.00031              0.00000         *
+ * H               6      0.00000             -0.00031              0.00000         *
+ * H               7      0.00000              0.00031             -0.00000         *
+ * H               8      0.00000             -0.00031             -0.00000         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -59.988812      0.000000      0.000000  *
+ *  y      0.000000    -59.998273      0.000000  *
+ *  z      0.000000      0.000000    -60.007733  *
+ *                                               *
+ *  Pressure:   59.9983                          *
+ *                                               *
+ *************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.000098 |     -114.553696 | <-- min LBFGS
+ | trial step |    1.000000 |    0.000081 |     -114.553696 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: improving iteration         5 with line minimization (lambda=  5.880495)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8446138     0.0000000     0.0000000        2.208800810  -0.000000000   0.000000000
+     0.0000000     2.8144641     0.0000000       -0.000000000   2.232462445   0.000000000
+     0.0000000     0.0000000     2.8331405        0.000000000   0.000000000   2.217745743
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.844614          alpha =   90.000000
+                    b =      2.814464          beta  =   90.000000
+                    c =      2.833141          gamma =   90.000000
+
+                Current cell volume =            22.682302 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1         0.000000   0.405636   0.410731   x
+            x  H                 2         0.000000   0.094364   0.910731   x
+            x  H                 3        -0.000000   0.905636   0.089269   x
+            x  H                 4         0.000000   0.594364   0.589269   x
+            x  H                 5         0.500000   0.905636   0.410731   x
+            x  H                 6         0.500000   0.594364   0.910731   x
+            x  H                 7         0.500000   0.405636   0.089269   x
+            x  H                 8         0.500000   0.094364   0.589269   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.23047998E+002                                        166.97  <-- SCF
+      1  -1.23048004E+002                    7.42094563E-007     168.60  <-- SCF
+      2  -1.23048004E+002                    6.76308978E-010     170.69  <-- SCF
+      3  -1.23048004E+002                    1.87259196E-008     172.79  <-- SCF
+      4  -1.23048004E+002                    1.47978691E-009     174.88  <-- SCF
+      5  -1.23048004E+002                    1.14196474E-011     176.43  <-- SCF
+      6  -1.23048004E+002                    1.22655472E-012     177.98  <-- SCF
+      7  -1.23048004E+002                    3.92739195E-013     179.52  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -123.0480041898     eV
+(energy not corrected for finite basis set)
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1      0.00000              0.00110              0.00087         *
+ * H               2      0.00000             -0.00110              0.00087         *
+ * H               3      0.00000              0.00110             -0.00087         *
+ * H               4      0.00000             -0.00110             -0.00087         *
+ * H               5      0.00000              0.00110              0.00087         *
+ * H               6      0.00000             -0.00110              0.00087         *
+ * H               7      0.00000              0.00110             -0.00087         *
+ * H               8      0.00000             -0.00110             -0.00087         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -59.990673      0.000000      0.000000  *
+ *  y      0.000000    -59.982042      0.000000  *
+ *  z      0.000000      0.000000    -59.987747  *
+ *                                               *
+ *  Pressure:   59.9868                          *
+ *                                               *
+ *************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.000098 |     -114.553696 | <-- min LBFGS
+ | trial step |    1.000000 |    0.000081 |     -114.553696 | <-- min LBFGS
+ |  line step |    5.880495 | -1.359E-007 |     -114.553696 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+ LBFGS: finished iteration     5 with enthalpy= -1.14553696E+002 eV
+  
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ | Parameter |      value      |    tolerance    |    units   | OK? | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ |  dE/ion   |   3.509518E-008 |   1.000000E-009 |         eV | No  | <-- LBFGS
+ |  |F|max   |   1.404145E-003 |   1.000000E-005 |       eV/A | No  | <-- LBFGS
+ |  |dR|max  |   1.604645E-004 |   1.000000E-005 |          A | No  | <-- LBFGS
+ |   Smax    |   1.795821E-002 |   1.000000E-005 |        GPa | No  | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+  
+
+================================================================================
+ Starting LBFGS iteration          6 ...
+================================================================================
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.000095 |     -114.553696 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: starting iteration         6 with trial guess (lambda=  1.000000)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8445258     0.0000000     0.0000000        2.208869122  -0.000000000   0.000000000
+     0.0000000     2.8144591     0.0000000       -0.000000000   2.232466391   0.000000000
+     0.0000000     0.0000000     2.8332005        0.000000000   0.000000000   2.217698815
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.844526          alpha =   90.000000
+                    b =      2.814459          beta  =   90.000000
+                    c =      2.833200          gamma =   90.000000
+
+                Current cell volume =            22.682041 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1         0.000000   0.405658   0.410715   x
+            x  H                 2         0.000000   0.094342   0.910715   x
+            x  H                 3        -0.000000   0.905658   0.089285   x
+            x  H                 4         0.000000   0.594342   0.589285   x
+            x  H                 5         0.500000   0.905658   0.410715   x
+            x  H                 6         0.500000   0.594342   0.910715   x
+            x  H                 7         0.500000   0.405658   0.089285   x
+            x  H                 8         0.500000   0.094342   0.589285   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.23047904E+002                                        181.38  <-- SCF
+      1  -1.23047906E+002                    2.58878113E-007     183.02  <-- SCF
+      2  -1.23047906E+002                    2.35912392E-010     185.12  <-- SCF
+      3  -1.23047906E+002                    6.36843220E-009     187.23  <-- SCF
+      4  -1.23047906E+002                    5.16708832E-010     189.09  <-- SCF
+      5  -1.23047906E+002                    4.24762545E-012     190.63  <-- SCF
+      6  -1.23047906E+002                    2.83980649E-013     192.18  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -123.0479064001     eV
+(energy not corrected for finite basis set)
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1     -0.00000              0.00063              0.00049         *
+ * H               2      0.00000             -0.00063              0.00049         *
+ * H               3      0.00000              0.00063             -0.00049         *
+ * H               4      0.00000             -0.00063             -0.00049         *
+ * H               5     -0.00000              0.00063              0.00049         *
+ * H               6      0.00000             -0.00063              0.00049         *
+ * H               7      0.00000              0.00063             -0.00049         *
+ * H               8      0.00000             -0.00063             -0.00049         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -59.994840     -0.000000      0.000000  *
+ *  y     -0.000000    -59.990115      0.000000  *
+ *  z      0.000000      0.000000    -59.992425  *
+ *                                               *
+ *  Pressure:   59.9925                          *
+ *                                               *
+ *************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.000095 |     -114.553696 | <-- min LBFGS
+ | trial step |    1.000000 |    0.000054 |     -114.553697 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: improving iteration         6 with line minimization (lambda=  2.329873)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8444089     0.0000000     0.0000000        2.208959975  -0.000000000   0.000000000
+     0.0000000     2.8144525     0.0000000       -0.000000000   2.232471640   0.000000000
+     0.0000000     0.0000000     2.8332802        0.000000000   0.000000000   2.217636410
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.844409          alpha =   90.000000
+                    b =      2.814452          beta  =   90.000000
+                    c =      2.833280          gamma =   90.000000
+
+                Current cell volume =            22.681693 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1         0.000000   0.405688   0.410692   x
+            x  H                 2         0.000000   0.094312   0.910692   x
+            x  H                 3        -0.000000   0.905688   0.089308   x
+            x  H                 4         0.000000   0.594312   0.589308   x
+            x  H                 5         0.500000   0.905688   0.410692   x
+            x  H                 6         0.500000   0.594312   0.910692   x
+            x  H                 7         0.500000   0.405688   0.089308   x
+            x  H                 8         0.500000   0.094312   0.589308   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.23047772E+002                                        194.05  <-- SCF
+      1  -1.23047776E+002                    4.58102066E-007     195.68  <-- SCF
+      2  -1.23047776E+002                    4.17584481E-010     197.79  <-- SCF
+      3  -1.23047776E+002                    1.12669443E-008     199.89  <-- SCF
+      4  -1.23047776E+002                    9.14822512E-010     201.98  <-- SCF
+      5  -1.23047776E+002                    6.71886130E-012     203.52  <-- SCF
+      6  -1.23047776E+002                    9.57679421E-013     205.05  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -123.0477762231     eV
+(energy not corrected for finite basis set)
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1      0.00000              0.00000             -0.00001         *
+ * H               2     -0.00000             -0.00000             -0.00001         *
+ * H               3      0.00000              0.00000              0.00001         *
+ * H               4      0.00000             -0.00000              0.00001         *
+ * H               5      0.00000              0.00000             -0.00001         *
+ * H               6     -0.00000             -0.00000             -0.00001         *
+ * H               7      0.00000              0.00000              0.00001         *
+ * H               8      0.00000             -0.00000              0.00001         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -60.000389      0.000000      0.000000  *
+ *  y      0.000000    -60.000824      0.000000  *
+ *  z      0.000000      0.000000    -59.998642  *
+ *                                               *
+ *  Pressure:   60.0000                          *
+ *                                               *
+ *************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.000095 |     -114.553696 | <-- min LBFGS
+ | trial step |    1.000000 |    0.000054 |     -114.553697 | <-- min LBFGS
+ |  line step |    2.329873 |  2.530E-007 |     -114.553697 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+ LBFGS: finished iteration     6 with enthalpy= -1.14553697E+002 eV
+  
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ | Parameter |      value      |    tolerance    |    units   | OK? | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ |  dE/ion   |   3.707351E-008 |   1.000000E-009 |         eV | No  | <-- LBFGS
+ |  |F|max   |   1.178864E-005 |   1.000000E-005 |       eV/A | No  | <-- LBFGS
+ |  |dR|max  |   1.836089E-004 |   1.000000E-005 |          A | No  | <-- LBFGS
+ |   Smax    |   1.358053E-003 |   1.000000E-005 |        GPa | No  | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+  
+
+================================================================================
+ Starting LBFGS iteration          7 ...
+================================================================================
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |  5.870E-006 |     -114.553697 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: starting iteration         7 with trial guess (lambda=  1.000000)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8444083     0.0000000     0.0000000        2.208960419  -0.000000000   0.000000000
+     0.0000000     2.8144538     0.0000000       -0.000000000   2.232470586   0.000000000
+     0.0000000     0.0000000     2.8332782        0.000000000   0.000000000   2.217637967
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.844408          alpha =   90.000000
+                    b =      2.814454          beta  =   90.000000
+                    c =      2.833278          gamma =   90.000000
+
+                Current cell volume =            22.681683 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1         0.000000   0.405688   0.410692   x
+            x  H                 2         0.000000   0.094312   0.910692   x
+            x  H                 3        -0.000000   0.905688   0.089308   x
+            x  H                 4         0.000000   0.594312   0.589308   x
+            x  H                 5         0.500000   0.905688   0.410692   x
+            x  H                 6         0.500000   0.594312   0.910692   x
+            x  H                 7         0.500000   0.405688   0.089308   x
+            x  H                 8         0.500000   0.094312   0.589308   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.23047773E+002                                        206.91  <-- SCF
+      1  -1.23047773E+002                    3.49676853E-010     208.53  <-- SCF
+      2  -1.23047773E+002                    1.48032466E-013     210.13  <-- SCF
+      3  -1.23047773E+002                    6.43790172E-012     211.66  <-- SCF
+      4  -1.23047773E+002                    3.62528488E-013     213.20  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -123.0477725586     eV
+(energy not corrected for finite basis set)
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1     -0.00000              0.00001             -0.00001         *
+ * H               2      0.00000             -0.00001             -0.00001         *
+ * H               3     -0.00000              0.00001              0.00001         *
+ * H               4      0.00000             -0.00001              0.00001         *
+ * H               5     -0.00000              0.00001             -0.00001         *
+ * H               6      0.00000             -0.00001             -0.00001         *
+ * H               7     -0.00000              0.00001              0.00001         *
+ * H               8      0.00000             -0.00001              0.00001         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -60.000468      0.000000      0.000000  *
+ *  y      0.000000    -60.000822      0.000000  *
+ *  z      0.000000      0.000000    -59.998728  *
+ *                                               *
+ *  Pressure:   60.0000                          *
+ *                                               *
+ *************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |  5.870E-006 |     -114.553697 | <-- min LBFGS
+ | trial step |    1.000000 |  5.318E-006 |     -114.553697 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: improving iteration         7 with line minimization (lambda= 10.632697)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8444028     0.0000000     0.0000000        2.208964689  -0.000000000   0.000000000
+     0.0000000     2.8144666     0.0000000       -0.000000000   2.232460432   0.000000000
+     0.0000000     0.0000000     2.8332590        0.000000000   0.000000000   2.217652970
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.844403          alpha =   90.000000
+                    b =      2.814467          beta  =   90.000000
+                    c =      2.833259          gamma =   90.000000
+
+                Current cell volume =            22.681589 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1         0.000000   0.405693   0.410686   x
+            x  H                 2         0.000000   0.094307   0.910686   x
+            x  H                 3        -0.000000   0.905693   0.089314   x
+            x  H                 4        -0.000000   0.594307   0.589314   x
+            x  H                 5         0.500000   0.905693   0.410686   x
+            x  H                 6         0.500000   0.594307   0.910686   x
+            x  H                 7         0.500000   0.405693   0.089314   x
+            x  H                 8         0.500000   0.094307   0.589314   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.23047737E+002                                        215.12  <-- SCF
+      1  -1.23047737E+002                    2.31526251E-008     216.76  <-- SCF
+      2  -1.23047737E+002                    1.21809572E-011     218.40  <-- SCF
+      3  -1.23047737E+002                    5.59139771E-010     219.94  <-- SCF
+      4  -1.23047737E+002                    4.81377410E-011     221.48  <-- SCF
+      5  -1.23047737E+002                    3.92739195E-013     223.03  <-- SCF
+      6  -1.23047737E+002                   -6.34424853E-014     224.58  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -123.0477373192     eV
+(energy not corrected for finite basis set)
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1     -0.00000              0.00001              0.00002         *
+ * H               2      0.00000             -0.00001              0.00002         *
+ * H               3     -0.00000              0.00001             -0.00002         *
+ * H               4     -0.00000             -0.00001             -0.00002         *
+ * H               5     -0.00000              0.00001              0.00002         *
+ * H               6      0.00000             -0.00001              0.00002         *
+ * H               7     -0.00000              0.00001             -0.00002         *
+ * H               8     -0.00000             -0.00001             -0.00002         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -60.001242      0.000000      0.000000  *
+ *  y      0.000000    -60.000863      0.000000  *
+ *  z      0.000000      0.000000    -59.999535  *
+ *                                               *
+ *  Pressure:   60.0005                          *
+ *                                               *
+ *************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |  5.870E-006 |     -114.553697 | <-- min LBFGS
+ | trial step |    1.000000 |  5.318E-006 |     -114.553697 | <-- min LBFGS
+ |  line step |   10.632697 |  4.178E-007 |     -114.553697 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+ LBFGS: finished iteration     7 with enthalpy= -1.14553697E+002 eV
+  
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ | Parameter |      value      |    tolerance    |    units   | OK? | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ |  dE/ion   |   3.532085E-010 |   1.000000E-009 |         eV | Yes | <-- LBFGS
+ |  |F|max   |   2.168524E-005 |   1.000000E-005 |       eV/A | No  | <-- LBFGS
+ |  |dR|max  |   2.306681E-005 |   1.000000E-005 |          A | No  | <-- LBFGS
+ |   Smax    |   1.242002E-003 |   1.000000E-005 |        GPa | No  | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+  
+
+================================================================================
+ Starting LBFGS iteration          8 ...
+================================================================================
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |  6.909E-006 |     -114.553697 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: starting iteration         8 with trial guess (lambda=  1.000000)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8444151     0.0000000     0.0000000        2.208955092  -0.000000000   0.000000000
+     0.0000000     2.8144772     0.0000000       -0.000000000   2.232452035   0.000000000
+     0.0000000     0.0000000     2.8332426        0.000000000   0.000000000   2.217665830
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.844415          alpha =   90.000000
+                    b =      2.814477          beta  =   90.000000
+                    c =      2.833243          gamma =   90.000000
+
+                Current cell volume =            22.681641 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1         0.000000   0.405694   0.410686   x
+            x  H                 2         0.000000   0.094306   0.910686   x
+            x  H                 3        -0.000000   0.905694   0.089314   x
+            x  H                 4        -0.000000   0.594306   0.589314   x
+            x  H                 5         0.500000   0.905694   0.410686   x
+            x  H                 6         0.500000   0.594306   0.910686   x
+            x  H                 7         0.500000   0.405694   0.089314   x
+            x  H                 8         0.500000   0.094306   0.589314   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.23047757E+002                                        226.43  <-- SCF
+      1  -1.23047757E+002                    2.61877287E-009     228.05  <-- SCF
+      2  -1.23047757E+002                    2.45915157E-012     229.58  <-- SCF
+      3  -1.23047757E+002                    2.42591980E-011     231.19  <-- SCF
+      4  -1.23047757E+002                    3.02711287E-012     232.74  <-- SCF
+      5  -1.23047757E+002                   -3.56486346E-013     234.28  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -123.0477569114     eV
+(energy not corrected for finite basis set)
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1      0.00000              0.00001              0.00001         *
+ * H               2      0.00000             -0.00001              0.00001         *
+ * H               3      0.00000              0.00001             -0.00001         *
+ * H               4      0.00000             -0.00001             -0.00001         *
+ * H               5      0.00000              0.00001              0.00001         *
+ * H               6      0.00000             -0.00001              0.00001         *
+ * H               7      0.00000              0.00001             -0.00001         *
+ * H               8      0.00000             -0.00001             -0.00001         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -60.000484     -0.000000      0.000000  *
+ *  y     -0.000000    -60.000382      0.000000  *
+ *  z      0.000000      0.000000    -59.999874  *
+ *                                               *
+ *  Pressure:   60.0002                          *
+ *                                               *
+ *************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |  6.909E-006 |     -114.553697 | <-- min LBFGS
+ | trial step |    1.000000 |  2.583E-006 |     -114.553697 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: improving iteration         8 with line minimization (lambda=  1.597146)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8444225     0.0000000     0.0000000        2.208949362  -0.000000000   0.000000000
+     0.0000000     2.8144835     0.0000000       -0.000000000   2.232447021   0.000000000
+     0.0000000     0.0000000     2.8332328        0.000000000   0.000000000   2.217673509
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.844423          alpha =   90.000000
+                    b =      2.814484          beta  =   90.000000
+                    c =      2.833233          gamma =   90.000000
+
+                Current cell volume =            22.681672 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1         0.000000   0.405694   0.410686   x
+            x  H                 2         0.000000   0.094306   0.910686   x
+            x  H                 3        -0.000000   0.905694   0.089314   x
+            x  H                 4        -0.000000   0.594306   0.589314   x
+            x  H                 5         0.500000   0.905694   0.410686   x
+            x  H                 6         0.500000   0.594306   0.910686   x
+            x  H                 7         0.500000   0.405694   0.089314   x
+            x  H                 8         0.500000   0.094306   0.589314   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.23047769E+002                                        236.11  <-- SCF
+      1  -1.23047769E+002                    1.54244391E-009     237.75  <-- SCF
+      2  -1.23047769E+002                    8.85173724E-013     239.30  <-- SCF
+      3  -1.23047769E+002                    8.34117628E-012     240.84  <-- SCF
+      4  -1.23047769E+002                    9.54658351E-013     242.39  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -123.0477686153     eV
+(energy not corrected for finite basis set)
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1      0.00000              0.00000              0.00000         *
+ * H               2      0.00000             -0.00000              0.00000         *
+ * H               3     -0.00000              0.00000             -0.00000         *
+ * H               4      0.00000             -0.00000             -0.00000         *
+ * H               5      0.00000              0.00000              0.00000         *
+ * H               6      0.00000             -0.00000              0.00000         *
+ * H               7     -0.00000              0.00000             -0.00000         *
+ * H               8      0.00000             -0.00000             -0.00000         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -60.000042      0.000000      0.000000  *
+ *  y      0.000000    -60.000098      0.000000  *
+ *  z      0.000000      0.000000    -60.000059  *
+ *                                               *
+ *  Pressure:   60.0001                          *
+ *                                               *
+ *************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |  6.909E-006 |     -114.553697 | <-- min LBFGS
+ | trial step |    1.000000 |  2.583E-006 |     -114.553697 | <-- min LBFGS
+ |  line step |    1.597146 |  1.012E-007 |     -114.553697 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+ LBFGS: finished iteration     8 with enthalpy= -1.14553697E+002 eV
+  
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ | Parameter |      value      |    tolerance    |    units   | OK? | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ |  dE/ion   |   6.946257E-010 |   1.000000E-009 |         eV | Yes | <-- LBFGS
+ |  |F|max   |   2.186985E-006 |   1.000000E-005 |       eV/A | Yes | <-- LBFGS
+ |  |dR|max  |   1.009520E-006 |   1.000000E-005 |          A | Yes | <-- LBFGS
+ |   Smax    |   9.810513E-005 |   1.000000E-005 |        GPa | No  | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+  
+
+================================================================================
+ Starting LBFGS iteration          9 ...
+================================================================================
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |  4.176E-007 |     -114.553697 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: starting iteration         9 with trial guess (lambda=  1.000000)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8444231     0.0000000     0.0000000        2.208948931  -0.000000000   0.000000000
+     0.0000000     2.8144836     0.0000000       -0.000000000   2.232446938   0.000000000
+     0.0000000     0.0000000     2.8332335        0.000000000   0.000000000   2.217672966
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.844423          alpha =   90.000000
+                    b =      2.814484          beta  =   90.000000
+                    c =      2.833233          gamma =   90.000000
+
+                Current cell volume =            22.681683 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1         0.000000   0.405693   0.410686   x
+            x  H                 2         0.000000   0.094307   0.910686   x
+            x  H                 3        -0.000000   0.905693   0.089314   x
+            x  H                 4        -0.000000   0.594307   0.589314   x
+            x  H                 5         0.500000   0.905693   0.410686   x
+            x  H                 6         0.500000   0.594307   0.910686   x
+            x  H                 7         0.500000   0.405693   0.089314   x
+            x  H                 8         0.500000   0.094307   0.589314   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.23047773E+002                                        244.24  <-- SCF
+      1  -1.23047773E+002                    1.05828108E-010     245.73  <-- SCF
+      2  -1.23047773E+002                    1.84285315E-013     247.27  <-- SCF
+      3  -1.23047773E+002                    1.81264244E-013     248.83  <-- SCF
+      4  -1.23047773E+002                    5.98172004E-013     250.40  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -123.0477726652     eV
+(energy not corrected for finite basis set)
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1      0.00000             -0.00000              0.00000         *
+ * H               2      0.00000              0.00000              0.00000         *
+ * H               3      0.00000             -0.00000             -0.00000         *
+ * H               4      0.00000              0.00000             -0.00000         *
+ * H               5      0.00000             -0.00000              0.00000         *
+ * H               6      0.00000              0.00000              0.00000         *
+ * H               7      0.00000             -0.00000             -0.00000         *
+ * H               8      0.00000              0.00000             -0.00000         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -59.999958      0.000000      0.000000  *
+ *  y      0.000000    -60.000050      0.000000  *
+ *  z      0.000000      0.000000    -59.999997  *
+ *                                               *
+ *  Pressure:   60.0000                          *
+ *                                               *
+ *************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |  4.176E-007 |     -114.553697 | <-- min LBFGS
+ | trial step |    1.000000 |  6.807E-008 |     -114.553697 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+ LBFGS: finished iteration     9 with enthalpy= -1.14553697E+002 eV
+  
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ | Parameter |      value      |    tolerance    |    units   | OK? | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ |  dE/ion   |   8.941161E-011 |   1.000000E-009 |         eV | Yes | <-- LBFGS
+ |  |F|max   |   4.783547E-007 |   1.000000E-005 |       eV/A | Yes | <-- LBFGS
+ |  |dR|max  |   7.118323E-007 |   1.000000E-005 |          A | Yes | <-- LBFGS
+ |   Smax    |   4.984251E-005 |   1.000000E-005 |        GPa | No  | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+  
+
+================================================================================
+ Starting LBFGS iteration         10 ...
+================================================================================
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |  1.069E-007 |     -114.553697 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: starting iteration        10 with trial guess (lambda=  1.000000)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8444232     0.0000000     0.0000000        2.208948863  -0.000000000   0.000000000
+     0.0000000     2.8144836     0.0000000       -0.000000000   2.232446963   0.000000000
+     0.0000000     0.0000000     2.8332336        0.000000000   0.000000000   2.217672893
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.844423          alpha =   90.000000
+                    b =      2.814484          beta  =   90.000000
+                    c =      2.833234          gamma =   90.000000
+
+                Current cell volume =            22.681684 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1         0.000000   0.405693   0.410686   x
+            x  H                 2         0.000000   0.094307   0.910686   x
+            x  H                 3        -0.000000   0.905693   0.089314   x
+            x  H                 4        -0.000000   0.594307   0.589314   x
+            x  H                 5         0.500000   0.905693   0.410686   x
+            x  H                 6         0.500000   0.594307   0.910686   x
+            x  H                 7         0.500000   0.405693   0.089314   x
+            x  H                 8         0.500000   0.094307   0.589314   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.23047773E+002                                        252.25  <-- SCF
+      1  -1.23047773E+002                    7.15691656E-012     253.44  <-- SCF
+      2  -1.23047773E+002                    1.45011395E-013     254.98  <-- SCF
+      3  -1.23047773E+002                    6.01193075E-013     256.52  <-- SCF
+      4  -1.23047773E+002                   -3.74612770E-013     258.08  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -123.0477731088     eV
+(energy not corrected for finite basis set)
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1     -0.00000             -0.00000              0.00000         *
+ * H               2      0.00000              0.00000              0.00000         *
+ * H               3     -0.00000             -0.00000             -0.00000         *
+ * H               4      0.00000              0.00000             -0.00000         *
+ * H               5     -0.00000             -0.00000              0.00000         *
+ * H               6      0.00000              0.00000              0.00000         *
+ * H               7     -0.00000             -0.00000             -0.00000         *
+ * H               8      0.00000              0.00000             -0.00000         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -59.999947      0.000000      0.000000  *
+ *  y      0.000000    -60.000043      0.000000  *
+ *  z      0.000000      0.000000    -59.999989  *
+ *                                               *
+ *  Pressure:   60.0000                          *
+ *                                               *
+ *************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |  1.069E-007 |     -114.553697 | <-- min LBFGS
+ | trial step |    1.000000 |  2.950E-008 |     -114.553697 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+ LBFGS: finished iteration    10 with enthalpy= -1.14553697E+002 eV
+  
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ | Parameter |      value      |    tolerance    |    units   | OK? | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ |  dE/ion   |   1.661589E-013 |   1.000000E-009 |         eV | Yes | <-- LBFGS
+ |  |F|max   |   2.969986E-007 |   1.000000E-005 |       eV/A | Yes | <-- LBFGS
+ |  |dR|max  |   4.196137E-007 |   1.000000E-005 |          A | Yes | <-- LBFGS
+ |   Smax    |   5.264454E-005 |   1.000000E-005 |        GPa | No  | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+  
+
+================================================================================
+ Starting LBFGS iteration         11 ...
+================================================================================
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |  1.786E-007 |     -114.553697 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: starting iteration        11 with trial guess (lambda=  1.000000)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8444230     0.0000000     0.0000000        2.208948951  -0.000000000   0.000000000
+     0.0000000     2.8144837     0.0000000       -0.000000000   2.232446835   0.000000000
+     0.0000000     0.0000000     2.8332335        0.000000000   0.000000000   2.217672936
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.844423          alpha =   90.000000
+                    b =      2.814484          beta  =   90.000000
+                    c =      2.833234          gamma =   90.000000
+
+                Current cell volume =            22.681684 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1         0.000000   0.405693   0.410686   x
+            x  H                 2         0.000000   0.094307   0.910686   x
+            x  H                 3        -0.000000   0.905693   0.089314   x
+            x  H                 4        -0.000000   0.594307   0.589314   x
+            x  H                 5         0.500000   0.905693   0.410686   x
+            x  H                 6         0.500000   0.594307   0.910686   x
+            x  H                 7         0.500000   0.405693   0.089314   x
+            x  H                 8         0.500000   0.094307   0.589314   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.23047773E+002                                        259.93  <-- SCF
+      1  -1.23047773E+002                    1.26884971E-012     260.99  <-- SCF
+      2  -1.23047773E+002                    6.04214146E-014     262.53  <-- SCF
+      3  -1.23047773E+002                   -4.83371317E-014     264.07  <-- SCF
+      4  -1.23047773E+002                   -4.19928831E-013     265.62  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -123.0477730940     eV
+(energy not corrected for finite basis set)
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1      0.00000             -0.00000              0.00000         *
+ * H               2     -0.00000              0.00000              0.00000         *
+ * H               3     -0.00000             -0.00000             -0.00000         *
+ * H               4     -0.00000              0.00000             -0.00000         *
+ * H               5     -0.00000             -0.00000              0.00000         *
+ * H               6     -0.00000              0.00000              0.00000         *
+ * H               7     -0.00000             -0.00000             -0.00000         *
+ * H               8     -0.00000              0.00000             -0.00000         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -59.999952      0.000000      0.000000  *
+ *  y      0.000000    -60.000034      0.000000  *
+ *  z      0.000000      0.000000    -59.999990  *
+ *                                               *
+ *  Pressure:   60.0000                          *
+ *                                               *
+ *************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |  1.786E-007 |     -114.553697 | <-- min LBFGS
+ | trial step |    1.000000 |  1.314E-007 |     -114.553697 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: improving iteration        11 with line minimization (lambda=  3.782355)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8444227     0.0000000     0.0000000        2.208949196  -0.000000000   0.000000000
+     0.0000000     2.8144842     0.0000000       -0.000000000   2.232446477   0.000000000
+     0.0000000     0.0000000     2.8332334        0.000000000   0.000000000   2.217673056
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.844423          alpha =   90.000000
+                    b =      2.814484          beta  =   90.000000
+                    c =      2.833233          gamma =   90.000000
+
+                Current cell volume =            22.681684 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1         0.000000   0.405693   0.410686   x
+            x  H                 2         0.000000   0.094307   0.910686   x
+            x  H                 3         0.000000   0.905693   0.089314   x
+            x  H                 4        -0.000000   0.594307   0.589314   x
+            x  H                 5         0.500000   0.905693   0.410686   x
+            x  H                 6         0.500000   0.594307   0.910686   x
+            x  H                 7         0.500000   0.405693   0.089314   x
+            x  H                 8         0.500000   0.094307   0.589314   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.23047773E+002                                        267.45  <-- SCF
+      1  -1.23047773E+002                    9.78222702E-012     268.52  <-- SCF
+      2  -1.23047773E+002                    2.11474951E-013     270.28  <-- SCF
+      3  -1.23047773E+002                    3.23254568E-013     271.81  <-- SCF
+      4  -1.23047773E+002                   -3.89718124E-013     273.35  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -123.0477730522     eV
+(energy not corrected for finite basis set)
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1      0.00000              0.00000              0.00000         *
+ * H               2      0.00000             -0.00000              0.00000         *
+ * H               3      0.00000              0.00000             -0.00000         *
+ * H               4      0.00000             -0.00000             -0.00000         *
+ * H               5      0.00000              0.00000              0.00000         *
+ * H               6      0.00000             -0.00000              0.00000         *
+ * H               7      0.00000              0.00000             -0.00000         *
+ * H               8      0.00000             -0.00000             -0.00000         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -59.999963     -0.000000      0.000000  *
+ *  y     -0.000000    -60.000012      0.000000  *
+ *  z      0.000000      0.000000    -59.999991  *
+ *                                               *
+ *  Pressure:   60.0000                          *
+ *                                               *
+ *************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |  1.786E-007 |     -114.553697 | <-- min LBFGS
+ | trial step |    1.000000 |  1.314E-007 |     -114.553697 | <-- min LBFGS
+ |  line step |    3.782355 |  2.642E-009 |     -114.553697 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+ LBFGS: finished iteration    11 with enthalpy= -1.14553697E+002 eV
+  
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ | Parameter |      value      |    tolerance    |    units   | OK? | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ |  dE/ion   |   9.062608E-011 |   1.000000E-009 |         eV | Yes | <-- LBFGS
+ |  |F|max   |   6.082854E-007 |   1.000000E-005 |       eV/A | Yes | <-- LBFGS
+ |  |dR|max  |   7.013341E-007 |   1.000000E-005 |          A | Yes | <-- LBFGS
+ |   Smax    |   3.659429E-005 |   1.000000E-005 |        GPa | No  | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+  
+
+================================================================================
+ Starting LBFGS iteration         12 ...
+================================================================================
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |  1.972E-007 |     -114.553697 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: starting iteration        12 with trial guess (lambda=  1.000000)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8444223     0.0000000     0.0000000        2.208949530  -0.000000000   0.000000000
+     0.0000000     2.8144845     0.0000000       -0.000000000   2.232446197   0.000000000
+     0.0000000     0.0000000     2.8332334        0.000000000   0.000000000   2.217673067
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.844422          alpha =   90.000000
+                    b =      2.814485          beta  =   90.000000
+                    c =      2.833233          gamma =   90.000000
+
+                Current cell volume =            22.681684 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1         0.000000   0.405693   0.410686   x
+            x  H                 2         0.000000   0.094307   0.910686   x
+            x  H                 3        -0.000000   0.905693   0.089314   x
+            x  H                 4        -0.000000   0.594307   0.589314   x
+            x  H                 5         0.500000   0.905693   0.410686   x
+            x  H                 6         0.500000   0.594307   0.910686   x
+            x  H                 7         0.500000   0.405693   0.089314   x
+            x  H                 8         0.500000   0.094307   0.589314   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.23047773E+002                                        275.25  <-- SCF
+      1  -1.23047773E+002                    2.12683379E-012     276.33  <-- SCF
+      2  -1.23047773E+002                    6.04214146E-014     277.87  <-- SCF
+      3  -1.23047773E+002                   -2.44706729E-013     279.41  <-- SCF
+      4  -1.23047773E+002                    4.35034185E-013     280.95  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -123.0477727924     eV
+(energy not corrected for finite basis set)
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1      0.00000              0.00000              0.00000         *
+ * H               2      0.00000             -0.00000              0.00000         *
+ * H               3      0.00000              0.00000             -0.00000         *
+ * H               4      0.00000             -0.00000             -0.00000         *
+ * H               5      0.00000              0.00000              0.00000         *
+ * H               6      0.00000             -0.00000              0.00000         *
+ * H               7      0.00000              0.00000             -0.00000         *
+ * H               8      0.00000             -0.00000             -0.00000         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -59.999982     -0.000000      0.000000  *
+ *  y     -0.000000    -60.000008      0.000000  *
+ *  z      0.000000      0.000000    -59.999998  *
+ *                                               *
+ *  Pressure:   60.0000                          *
+ *                                               *
+ *************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |  1.972E-007 |     -114.553697 | <-- min LBFGS
+ | trial step |    1.000000 |  9.978E-008 |     -114.553697 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: improving iteration        12 with line minimization (lambda=  2.024432)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8444219     0.0000000     0.0000000        2.208949871  -0.000000000   0.000000000
+     0.0000000     2.8144849     0.0000000       -0.000000000   2.232445910   0.000000000
+     0.0000000     0.0000000     2.8332333        0.000000000   0.000000000   2.217673079
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.844422          alpha =   90.000000
+                    b =      2.814485          beta  =   90.000000
+                    c =      2.833233          gamma =   90.000000
+
+                Current cell volume =            22.681683 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1         0.000000   0.405693   0.410686   x
+            x  H                 2         0.000000   0.094307   0.910686   x
+            x  H                 3        -0.000000   0.905693   0.089314   x
+            x  H                 4        -0.000000   0.594307   0.589314   x
+            x  H                 5         0.500000   0.905693   0.410686   x
+            x  H                 6         0.500000   0.594307   0.910686   x
+            x  H                 7         0.500000   0.405693   0.089314   x
+            x  H                 8         0.500000   0.094307   0.589314   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.23047773E+002                                        282.80  <-- SCF
+      1  -1.23047773E+002                    2.22048699E-012     283.87  <-- SCF
+      2  -1.23047773E+002                    5.13582024E-014     285.41  <-- SCF
+      3  -1.23047773E+002                    2.02411739E-013     286.99  <-- SCF
+      4  -1.23047773E+002                   -6.04214146E-015     288.52  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy =  -123.0477725262     eV
+(energy not corrected for finite basis set)
+ 
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1      0.00000             -0.00000             -0.00000         *
+ * H               2      0.00000              0.00000             -0.00000         *
+ * H               3      0.00000             -0.00000              0.00000         *
+ * H               4      0.00000              0.00000              0.00000         *
+ * H               5      0.00000             -0.00000             -0.00000         *
+ * H               6     -0.00000              0.00000             -0.00000         *
+ * H               7      0.00000             -0.00000              0.00000         *
+ * H               8      0.00000              0.00000              0.00000         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -60.000001     -0.000000      0.000000  *
+ *  y     -0.000000    -60.000005      0.000000  *
+ *  z      0.000000      0.000000    -60.000003  *
+ *                                               *
+ *  Pressure:   60.0000                          *
+ *                                               *
+ *************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |  1.972E-007 |     -114.553697 | <-- min LBFGS
+ | trial step |    1.000000 |  9.978E-008 |     -114.553697 | <-- min LBFGS
+ |  line step |    2.024432 |  5.617E-009 |     -114.553697 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+ LBFGS: finished iteration    12 with enthalpy= -1.14553697E+002 eV
+  
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ | Parameter |      value      |    tolerance    |    units   | OK? | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ |  dE/ion   |   7.975627E-013 |   1.000000E-009 |         eV | Yes | <-- LBFGS
+ |  |F|max   |   6.252278E-008 |   1.000000E-005 |       eV/A | Yes | <-- LBFGS
+ |  |dR|max  |   3.838862E-007 |   1.000000E-005 |          A | Yes | <-- LBFGS
+ |   Smax    |   4.960326E-006 |   1.000000E-005 |        GPa | Yes | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+  
+ LBFGS: Geometry optimization completed successfully.
+
+================================================================================
+ LBFGS: Final Configuration:
+================================================================================
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)              Reciprocal Lattice(1/A)
+     2.8444219     0.0000000     0.0000000        2.208949871  -0.000000000   0.000000000
+     0.0000000     2.8144849     0.0000000       -0.000000000   2.232445910   0.000000000
+     0.0000000     0.0000000     2.8332333        0.000000000   0.000000000   2.217673079
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.844422          alpha =   90.000000
+                    b =      2.814485          beta  =   90.000000
+                    c =      2.833233          gamma =   90.000000
+
+                Current cell volume =            22.681683 A**3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  H                 1         0.000000   0.405693   0.410686   x
+            x  H                 2         0.000000   0.094307   0.910686   x
+            x  H                 3        -0.000000   0.905693   0.089314   x
+            x  H                 4        -0.000000   0.594307   0.589314   x
+            x  H                 5         0.500000   0.905693   0.410686   x
+            x  H                 6         0.500000   0.594307   0.910686   x
+            x  H                 7         0.500000   0.405693   0.089314   x
+            x  H                 8         0.500000   0.094307   0.589314   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+ LBFGS: Final Enthalpy     = -1.14553697E+002 eV
+ LBFGS: Final <frequency>  =     450.37995 cm-1
+ LBFGS: Final bulk modulus =     183.87476 GPa
+
+ ******************************** Symmetrised Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * H               1      0.00000             -0.00000             -0.00000         *
+ * H               2      0.00000              0.00000             -0.00000         *
+ * H               3      0.00000             -0.00000              0.00000         *
+ * H               4      0.00000              0.00000              0.00000         *
+ * H               5      0.00000             -0.00000             -0.00000         *
+ * H               6     -0.00000              0.00000             -0.00000         *
+ * H               7      0.00000             -0.00000              0.00000         *
+ * H               8      0.00000              0.00000              0.00000         *
+ *                                                                                  *
+ ************************************************************************************
+
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -60.000001     -0.000000      0.000000  *
+ *  y     -0.000000    -60.000005      0.000000  *
+ *  z      0.000000      0.000000    -60.000003  *
+ *                                               *
+ *  Pressure:   60.0000                          *
+ *                                               *
+ *************************************************
+
+ Pseudo atomic calculation performed for H 1s1
+
+ Converged in 24 iterations to a total energy of -12.4855 eV
+
+Charge spilling parameter for spin component 1 = 0.61%
+
+            Orbital Populations       
+     Ion    Atom   Orbital             Charge
+  -------------------------------------------
+      H     1      S                    1.000
+      H     2      S                    1.000
+      H     3      S                    1.000
+      H     4      S                    1.000
+      H     5      S                    1.000
+      H     6      S                    1.000
+      H     7      S                    1.000
+      H     8      S                    1.000
+  -------------------------------------------
+                           Total:       8.000
+  -------------------------------------------
+
+     Atomic Populations (Mulliken)
+     -----------------------------
+Species          Ion     s      p      d      f     Total  Charge (e)
+=====================================================================
+  H               1     1.00   0.00   0.00   0.00   1.00     0.00
+  H               2     1.00   0.00   0.00   0.00   1.00     0.00
+  H               3     1.00   0.00   0.00   0.00   1.00     0.00
+  H               4     1.00   0.00   0.00   0.00   1.00     0.00
+  H               5     1.00   0.00   0.00   0.00   1.00     0.00
+  H               6     1.00   0.00   0.00   0.00   1.00     0.00
+  H               7     1.00   0.00   0.00   0.00   1.00     0.00
+  H               8     1.00   0.00   0.00   0.00   1.00     0.00
+=====================================================================
+
+                 Bond                   Population      Length (A)
+======================================================================
+               H 2 -- H 3                    1.47        0.73344
+               H 5 -- H 8                    1.47        0.73344
+               H 6 -- H 7                    1.47        0.73344
+               H 1 -- H 4                    1.47        0.73344
+               H 5 -- H 6                   -0.25        1.66579
+               H 1 -- H 2                   -0.25        1.66579
+               H 3 -- H 4                   -0.25        1.66579
+               H 7 -- H 8                   -0.25        1.66579
+               H 6 -- H 8                   -0.26        1.67612
+               H 2 -- H 4                   -0.26        1.67612
+               H 5 -- H 7                   -0.26        1.67612
+               H 1 -- H 3                   -0.26        1.67612
+               H 3 -- H 5                   -0.21        1.68871
+               H 1 -- H 7                   -0.21        1.68871
+               H 4 -- H 6                   -0.21        1.68871
+               H 2 -- H 8                   -0.21        1.68871
+               H 3 -- H 6                   -0.23        1.74553
+               H 4 -- H 5                   -0.23        1.74553
+               H 2 -- H 7                   -0.23        1.74553
+               H 1 -- H 8                   -0.23        1.74553
+               H 4 -- H 8                   -0.26        2.00075
+               H 2 -- H 6                   -0.26        2.00075
+               H 3 -- H 7                   -0.26        2.00075
+               H 1 -- H 5                   -0.26        2.00075
+               H 2 -- H 5                   -0.26        2.07636
+               H 1 -- H 6                   -0.26        2.07636
+               H 3 -- H 8                   -0.26        2.07636
+               H 4 -- H 7                   -0.26        2.07636
+======================================================================
+
+
+Writing analysis data to Cmca4.castep_bin
+
+Writing model to Cmca4.check
+ 
+ A BibTeX formatted list of references used in this run has been written to 
+ Cmca4.bib
+ 
+Initialisation time =      4.28 s
+Calculation time    =    287.43 s
+Finalisation time   =      5.71 s
+Total time          =    297.42 s
+Peak Memory Use     = 561028 kB
+  
+Overall parallel efficiency rating: Excellent (95%)                             
+  
+Data was distributed by:-
+k-point (32-way); efficiency rating: Excellent (95%)                            
+  
+Parallel notes:
+1) Calculation only took 291.7 s, so efficiency estimates may be inaccurate.    
